@@ -8,7 +8,7 @@ How to use
 
 Just copy the files into {project-root}/vendor/hybridauth/hybridauth/hybridauth/Hybrid/Providers
 
-Then, create a file at {project-root}/app/config/hybridauth.php like
+Then, create a configuration file in {project-root}/app/config folder like
 
 ```php
 return array(
@@ -48,11 +48,6 @@ App::bind('Hybrid_Auth', function() {
 * I assumed you're using Laravel 4.x PHP framework. But, the hybridauth
 package itself isn't necessarily dependent on any specific PHP frameworks.
 
-License
--------
-
-This code is released under WTFPL Version 2 (http://www.wtfpl.net).
-
 Buy me a beer if you use my code
 --------------------------------
 
@@ -63,5 +58,7 @@ Contact me
 ----------
 
 Chuck JS. Oh
+
 http://facebook.com/chuckoh
+
 <jinseokoh@hotmail.com>
