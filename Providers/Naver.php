@@ -20,15 +20,15 @@ class Hybrid_Providers_Naver extends Hybrid_Provider_Model_OAuth2
     /**
     * initialization
     */
-	function initialize() 
-	{
-		parent::initialize();
+    function initialize() 
+    {
+      parent::initialize();
 
 		// Provider API end-points
-		$this->api->api_base_url  = "https://apis.naver.com/nidlogin/";
-		$this->api->authorize_url = "https://nid.naver.com/oauth2.0/authorize";
-		$this->api->token_url     = "https://nid.naver.com/oauth2.0/token";
-	}
+      $this->api->api_base_url  = "https://apis.naver.com/nidlogin/";
+      $this->api->authorize_url = "https://nid.naver.com/oauth2.0/authorize";
+      $this->api->token_url     = "https://nid.naver.com/oauth2.0/token";
+  }
 
     /**
     * begin login step 
@@ -43,7 +43,7 @@ class Hybrid_Providers_Naver extends Hybrid_Provider_Model_OAuth2
             "client_id" => $this->api->client_id,
             "redirect_uri" => $this->api->redirect_uri,
             "state" => $token,
-        );
+            );
 
         Hybrid_Auth::redirect($this->api->authorizeUrl($parameters));
     }
@@ -117,8 +117,8 @@ class Hybrid_Providers_Naver extends Hybrid_Provider_Model_OAuth2
         $this->user->profile->gender        = (array_key_exists('gender',$data))?(($data['gender'] == "M")?"male":"female"):"";
         $this->user->profile->photoURL      = (array_key_exists('profile_image',$data))?$data['profile_image']:"";
 
-		return $this->user->profile;
-	}
+        return $this->user->profile;
+    }
 
     private function authenticate($code)
     {
@@ -130,7 +130,7 @@ class Hybrid_Providers_Naver extends Hybrid_Provider_Model_OAuth2
             // "redirect_uri"  => $this->api->redirect_uri,
             "code"          => $code,
             "state"         => $token
-        );
+            );
         Hybrid_Auth::storage()->set("naver_state_token", null);
 
         $response = $this->request($this->api->token_url, $params, $this->api->curl_authenticate_method);
