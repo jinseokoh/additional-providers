@@ -66,9 +66,9 @@ class Hybrid_Providers_Kakao extends Hybrid_Provider_Model_OAuth2
     */
     function getUserProfile()
     {
-        $data = $this->api->api("v1/user/me");
+        $data = json_decode ( $this->api->get("user/me") );
 
-        if ( ! isset( $data->id ) || isset( $data->error ) ) {
+        if ( ! isset( $data->id ) ) {
             throw new Exception("User profile request failed! {$this->providerId} returned an invalid response.", 6);
         }
         # store the user profile.
